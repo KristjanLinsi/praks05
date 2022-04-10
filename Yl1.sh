@@ -7,13 +7,17 @@
 #Täpsuseks võtame kaks kohta peale komat.
 
 
-echo "Sisesta a külje vaartus: "
+echo "Sisesta a külje väärtus: "
 read a
-echo "Sisesta b külje vaartus: "
+echo "Sisesta b külje väärtus: "
 read b
 
-aruudus=$(($a**2))
-bruudus=$(($b**2))
-cruudus=$(($aruudus+$bruudus))
-hypotenuus=`echo "scale=2;sqrt($cruudus)"|bc`
+#aruudus=$(($a**2))
+#bruudus=$(($b**2))
+#cruudus=$(($aruudus+$bruudus))
+
+aruudus=`echo "$a^2" | bc`
+bruudus=`echo "$b^2" | bc`
+cruudus=`echo "scale=10;$aruudus+$bruudus" | bc`
+hypotenuus=`echo "scale=10;sqrt($cruudus)" | bc`
 echo $hypotenuus
